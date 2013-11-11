@@ -1,0 +1,31 @@
+import java.text.MessageFormat;
+import java.util.Scanner;
+
+public class PrimeFactor {
+    public static void main(String[] args) {
+        System.out.print("Enter a positive number: ");
+        Scanner scanner = new Scanner (System.in);
+        int number = scanner.nextInt();
+        int count;
+        StackOfIntegers stack = new StackOfIntegers();    
+        for (int i = 2; i<=(number); i++) {
+            count = 0;
+            while (number % i == 0) {
+                number /= i;
+                count++;
+            }
+                if (count == 0) continue;
+                  stack.push(i);
+                  count++;
+        }
+        System.out.println("The prime factors are \n");
+        final int NUMBER_PER_LINE = 10;
+
+         while (!stack.empty()) {
+         System.out.print(MessageFormat.format("{0} ", stack.pop()));
+
+        if (stack.getSize() % NUMBER_PER_LINE == 0)
+         System.out.println(); // advance to the new line
+}
+}
+}
